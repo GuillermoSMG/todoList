@@ -5,19 +5,28 @@
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
   background-color: #333;
+}
+
+::-webkit-scrollbar {
+  background-color: #444;
+  border-radius: 15px;
+  width: 0.75rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #666;
+  border-radius: 15px;
 }
 
 .main {
   background-color: #666;
   border-radius: 15px;
-  padding: 2rem 2rem;
-  margin: 1rem;
+  padding: 2rem;
+  margin: 1rem auto;
   text-align: center;
+  height: fit-content;
+  max-width: 50%;
 }
 
 .title {
@@ -63,16 +72,26 @@ body {
 .submit-btn {
   border: none;
   border-radius: 10px;
-  padding: 0.3rem;
-  margin: 1rem 0.7rem 0;
+  padding: 0.5rem;
+  margin: 1rem 0 0;
+  align-self: center;
   font-size: 1em;
   cursor: pointer;
+  width: 30%;
 }
 
 .submit-btn:hover {
-  box-shadow: 0 0 10px #11ff11, 0 0 10px #11ff11, 0 0 10px #11ff11;
+  box-shadow: 0 0 10px #11ff11;
   background-color: #11ff11;
   color: #fff;
+}
+
+.list-section {
+  background-color: #444;
+  max-width: 50%;
+  margin: 1rem auto;
+  border-radius: 15px;
+  padding: 0.75rem 2rem;
 }
 
 .list {
@@ -83,16 +102,45 @@ body {
 }
 
 .list-item {
-  padding: 0.5rem;
+  padding: 1rem 0.5rem;
   display: flex;
   justify-content: space-between;
+  border-radius: 5px;
+}
+
+.list-item:nth-child(even) {
+  background-color: #333;
 }
 
 .delete-btn {
   padding: 0.25rem;
-  background-color: #551111;
+  background-color: #1a0505;
   color: #ff1212;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.on-focusBtn:focus {
+  transform: translateY(3px);
+}
+
+@media (max-width: 790px) {
+  .main {
+    max-width: 80%;
+    margin: 1rem 2.25rem;
+  }
+
+  .text-input {
+    padding: 0;
+  }
+
+  .list-section {
+    max-width: 80%;
+    margin: 1rem 2.25rem;
+  }
+
+  .submit-btn {
+    width: 40%;
+  }
 }
