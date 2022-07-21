@@ -30,7 +30,7 @@ body {
 }
 
 .title {
-  color: #45cb43;
+  color: #f06aff;
   padding-bottom: 1rem;
 }
 
@@ -77,13 +77,12 @@ body {
   align-self: center;
   font-size: 1em;
   cursor: pointer;
-  width: 30%;
+  width: 25%;
 }
 
 .submit-btn:hover {
-  box-shadow: 0 0 10px #11ff11;
-  background-color: #11ff11;
-  color: #fff;
+  box-shadow: 0 0 10px #770883;
+  background-color: #efefef;
 }
 
 .list-section {
@@ -106,6 +105,8 @@ body {
   display: flex;
   justify-content: space-between;
   border-radius: 5px;
+  flex-wrap: wrap;
+  word-break: break-all;
 }
 
 .list-item:nth-child(even) {
@@ -114,11 +115,11 @@ body {
 
 .delete-btn {
   padding: 0.25rem;
-  background-color: #1a0505;
-  color: #ff1212;
+  background-color: transparent;
+  color: #fba1a1;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
+  font-size: 0.95em;
 }
 
 .on-focusBtn:focus {
