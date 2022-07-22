@@ -10,8 +10,7 @@ form.addEventListener("submit", (event) => {
 });
 
 document.addEventListener("DOMContentLoaded", (event) => {
-  let tasksArr = JSON.parse(localStorage.getItem("task"));
-  tasksArr.forEach((task) => {
+  myArray.forEach((task) => {
     addTask(Object.values(task));
   });
 });
@@ -38,4 +37,11 @@ function myArrayOfTasks(myObjOfTasks) {
   let myObjJSON = JSON.stringify(myArray);
   localStorage.setItem("task", myObjJSON);
   console.log(localStorage.getItem("task"));
+}
+
+function tasksId() {
+  let lastId = localStorage.getItem("lastId") || -1;
+  let newId = JSON.parse(lastId) + 1;
+  localStorage.setItem("lastId", JSON.stringify(newId));
+  return newId;
 }
