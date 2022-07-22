@@ -3,12 +3,12 @@ const tasksList = document.querySelector(".list");
 class Tasks {
   constructor() {
     this.tasks = JSON.parse(localStorage.getItem("task")) || [];
-    this.lastId = this.tasks[this.tasks.length - 1]?.id || 0;
+    this.lastId = this.tasks[this.tasks.length - 1]?.id + 1 || 0;
   }
 
   addTask(taskText) {
     const id = this.lastId;
-    this.id++;
+    this.lastId++;
 
     const newTask = {
       id: id,
@@ -17,15 +17,10 @@ class Tasks {
 
     this.tasks.push(newTask);
     this.saveTasks();
-    this.renderOneTask(newTask.id, newTask.task);
+    this.renderOneTask(newTask);
   }
 
-  renderOneTask(id, taskText) {
-    const newTask = {
-      id: id,
-      task: taskText,
-    };
-
+  renderOneTask(newTask) {
     const oneListItem = document.createElement("li");
     oneListItem.id = newTask.id;
     tasksList.appendChild(oneListItem);
@@ -42,18 +37,7 @@ class Tasks {
 
   renderTasks(tasks) {
     this.tasks.forEach((task) => {
-      const listItem = document.createElement("li");
-      listItem.id = task.id;
-      tasksList.appendChild(listItem);
-      listItem.textContent = task.task;
-      listItem.classList.add("list-item");
-      const deleteBtn = document.createElement("button");
-      listItem.appendChild(deleteBtn);
-      deleteBtn.innerHTML = "Eliminar";
-      deleteBtn.classList.add("delete-btn", "on-focusBtn");
-      deleteBtn.addEventListener("click", (event) => {
-        this.deleteTask(task.id);
-      });
+      this.renderOneTask(task);
     });
   }
 
@@ -79,7 +63,6 @@ form.addEventListener("submit", (event) => {
   const inputText = document.querySelector(".text-input").value;
   tarea.addTask(inputText);
   form.reset();
-  tarea.renderOneTask();
 });
 
 document.addEventListener("DOMContentLoaded", (event) => {
