@@ -21,7 +21,6 @@ class Tasks {
   deleteTask(id) {
     const taskToDelete = document.getElementById(id);
     taskToDelete.remove();
-    this.tasks.splice(id, 1);
     const index = this.tasks.findIndex((task) => task.id == id);
     this.tasks.splice(index, 1);
   }
