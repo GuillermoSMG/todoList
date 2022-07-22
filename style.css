@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   list-style: none;
+  box-sizing: border-box;
 }
 
 body {
@@ -124,6 +125,21 @@ body {
 
 .on-focusBtn:focus {
   transform: translateY(3px);
+}
+
+.delete-all {
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: rgb(255, 69, 69);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9em;
+  padding: 0.2rem;
+}
+
+.delete-all:hover {
+  border-bottom: 1px solid rgb(255, 69, 69);
+  color: #fff;
 }
 
 @media (max-width: 790px) {

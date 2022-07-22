@@ -49,6 +49,12 @@ class Tasks {
     this.saveTasks();
   }
 
+  deleteAllTasks() {
+    localStorage.clear();
+    this.tasks = [];
+    tasksList.innerHTML = "";
+  }
+
   saveTasks() {
     localStorage.setItem("task", JSON.stringify(this.tasks));
   }
@@ -57,6 +63,16 @@ class Tasks {
 const tarea = new Tasks();
 
 const form = document.querySelector("#form");
+
+const deleteAllBtn = document.querySelector("#delete-all");
+deleteAllBtn.addEventListener("click", (event) => {
+  let confirmation = confirm(
+    "¿Está seguro que desea eliminar todas las tareas?"
+  );
+  if (confirmation) {
+    tarea.deleteAllTasks();
+  }
+});
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
