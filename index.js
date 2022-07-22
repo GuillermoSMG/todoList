@@ -2,8 +2,8 @@ const tasksList = document.querySelector(".list");
 
 class Tasks {
   constructor() {
-    this.tasks = [];
-    this.lastId = 0;
+    this.tasks = JSON.parse(localStorage.getItem("task")) || [];
+    this.lastId = this.tasks[this.tasks.length - 1].id || 0;
   }
 
   addTask(taskText) {
@@ -16,6 +16,7 @@ class Tasks {
     };
 
     this.tasks.push(newTask);
+    this.saveTasks();
   }
 
   deleteTask(id) {
@@ -23,6 +24,7 @@ class Tasks {
     taskToDelete.remove();
     const index = this.tasks.findIndex((task) => task.id == id);
     this.tasks.splice(index, 1);
+    this.saveTasks();
   }
 
   renderTasks() {
@@ -43,7 +45,9 @@ class Tasks {
     });
   }
 
-  saveTasks() {}
+  saveTasks() {
+    localStorage.setItem("task", JSON.stringify(this.tasks));
+  }
 }
 
 const tarea = new Tasks();
@@ -53,3 +57,4 @@ tarea.addTask("pasear2");
 tarea.addTask("pasear3");
 tarea.renderTasks();
 console.log(tarea.tasks);
+console.log(tarea.tasks[tarea.tasks.length - 1].id);
